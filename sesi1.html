@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Saya</title>
+<title>Simple Portfolio</title>
 
 <style>
-/* ================== GLOBAL ================== */
 * {
     margin: 0;
     padding: 0;
@@ -15,200 +14,228 @@
 }
 
 body {
-    background: linear-gradient(135deg, #4f46e5, #6366f1);
-    padding: 30px;
+    background: #f3f4f6;
 }
 
-/* ================== CONTAINER ================== */
-.container {
-    background: #f3f3f3;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 3px solid #333;
-}
-
-/* ================== NAVBAR ================== */
+/* ================= NAVBAR ================= */
 .navbar {
+    background: #1976d2;
+    color: white;
+    padding: 15px 40px;
     display: flex;
     justify-content: space-between;
-    padding: 15px 25px;
-    background: #e5e5e5;
-    border-bottom: 2px solid #333;
+    align-items: center;
 }
 
-.navbar ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
+.navbar .menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
 }
 
-/* ================== HERO ================== */
+.navbar .menu a:hover {
+    text-decoration: underline;
+}
+
+/* ================= HERO ================= */
 .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 40px;
-    gap: 20px;
-    border-bottom: 2px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 40px;
+    background: #e5e7eb;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    max-width: 500px;
 }
 
 .hero-text h1 {
+    font-size: 28px;
     margin-bottom: 10px;
 }
 
 .hero-text p {
-    margin-bottom: 15px;
+    color: #555;
+    margin-bottom: 20px;
 }
 
-.hero-text a {
-    display: inline-block;
-    padding: 8px 12px;
-    background: #ddd;
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
+.hero-text button {
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-.hero-img {
-    background: #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    color: #888;
+.hero-text button:hover {
+    background: #0d47a1;
 }
 
-/* ================== ABOUT ================== */
-.about {
-    padding: 40px;
+.hero-img img {
+    width: 350px;
+    border-radius: 10px;
+}
+
+/* ================= SECTION TITLE ================= */
+.section {
+    padding: 50px 40px;
     text-align: center;
-    border-bottom: 2px solid #333;
 }
 
-.about h2 {
+.section h2 {
+    color: #1976d2;
     margin-bottom: 10px;
 }
 
-.about p {
-    margin-bottom: 30px;
-    color: #555;
-}
-
+/* ================= ABOUT ================= */
 .about-grid {
+    margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
 }
 
 .about-box {
-    background: #ddd;
+    background: #e5e7eb;
     padding: 15px;
-    border: 1px solid #aaa;
+    border-radius: 8px;
 }
 
-/* ================== PORTFOLIO ================== */
-.portfolio {
-    padding: 40px;
-    text-align: center;
+.about-box span {
+    color: #1976d2;
+    font-weight: bold;
 }
 
-.portfolio h2 {
-    margin-bottom: 30px;
-}
-
+/* ================= PORTFOLIO ================= */
 .portfolio-grid {
+    margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.card {
+.portfolio-card {
     background: white;
-    border: 2px solid #333;
-    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.3s;
 }
 
-.card-img {
-    background: #ccc;
+.portfolio-card:hover {
+    transform: translateY(-5px);
+}
+
+.portfolio-card img {
+    width: 100%;
     height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    font-size: 20px;
-    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.portfolio-card .content {
+    padding: 15px;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: #1976d2;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width: 768px){
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-img img {
+        width: 100%;
+        margin-top: 20px;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
-
-    <!-- NAVBAR -->
-    <div class="navbar">
-        <div><strong>Brand</strong></div>
-        <ul>
-            <li>Header</li>
-            <li>Biodata</li>
-            <li>Portfolio</li>
-        </ul>
+<!-- NAVBAR -->
+<div class="navbar">
+    <h3>Brand</h3>
+    <div class="menu">
+        <a href="#">Header</a>
+        <a href="#">Biodata</a>
+        <a href="#">Portofolio</a>
     </div>
+</div>
 
-    <!-- HERO SECTION -->
-    <div class="hero">
-        <div class="hero-text">
-            <h1>Selamat Datang di Website Saya</h1>
-            <p>Ini adalah contoh header dengan dua kolom. Kolom kiri berisi teks seperti ini.</p>
-            <a href="#">Pelajari Lebih Lanjut</a>
-        </div>
-        <div class="hero-img">
-            600 x 400
-        </div>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Selamat Datang di Website Saya</h1>
+        <p>Ini adalah contoh header dengan dua kolom. Kolom kiri berisi teks seperti ini.</p>
+        <button>Pelajari Lebih Lanjut</button>
     </div>
-
-    <!-- ABOUT -->
-    <div class="about">
-        <h2>About Me</h2>
-        <p>A brief introduction about myself</p>
-
-        <div class="about-grid">
-            <div class="about-box">Wisnu Gesang Arya Khabib</div>
-            <div class="about-box">S1 Teknik Informatika</div>
-            <div class="about-box">Junior Fullstack Developer</div>
-            <div class="about-box">08561515397</div>
-            <div class="about-box">Olahraga</div>
-            <div class="about-box">Tangerang Selatan</div>
-        </div>
+    <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1603415526960-f8f0b04b1c8a" alt="Profile">
     </div>
+</section>
 
-    <!-- PORTFOLIO -->
-    <div class="portfolio">
-        <h2>Portofolio</h2>
+<!-- ABOUT -->
+<section class="section">
+    <h2>About Me</h2>
+    <p>A brief introduction about myself</p>
 
-        <div class="portfolio-grid">
-            <div class="card">
-                <div class="card-img">350 x 200</div>
-                <strong>Tugas Sesi 1</strong>
-                <p>Tugas Sesi 1</p>
+    <div class="about-grid">
+        <div class="about-box"><span>Full Name:</span> Dodi</div>
+        <div class="about-box"><span>Education:</span> S1 Informatika</div>
+        <div class="about-box"><span>Pekerjaan:</span> Programmer</div>
+        <div class="about-box"><span>Contact:</span> dodi@example.com</div>
+        <div class="about-box"><span>Hobi:</span> Membaca, Coding</div>
+        <div class="about-box"><span>Alamat:</span> Jakarta</div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section">
+    <h2>Portofolio</h2>
+
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="">
+            <div class="content">
+                <h4>Proyek 1</h4>
+                <p>Deskripsi proyek 1.</p>
             </div>
+        </div>
 
-            <div class="card">
-                <div class="card-img">350 x 200</div>
-                <strong>Proyek 2</strong>
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="">
+            <div class="content">
+                <h4>Proyek 2</h4>
                 <p>Deskripsi proyek 2.</p>
             </div>
+        </div>
 
-            <div class="card">
-                <div class="card-img">350 x 200</div>
-                <strong>Proyek 3</strong>
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="">
+            <div class="content">
+                <h4>Proyek 3</h4>
                 <p>Deskripsi proyek 3.</p>
             </div>
         </div>
     </div>
+</section>
 
-</div>
+<footer>
+    © 2024 wisnu gesang. All rights reserved.
+</footer>
 
 </body>
 </html>
-
-
