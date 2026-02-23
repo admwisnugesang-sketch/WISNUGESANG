@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple E-Commerce</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+}
+
+.search-box {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.search-box input {
+    padding: 10px;
+    width: 300px;
+    max-width: 90%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    background: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.filter-btn:hover {
+    background: #555;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.price {
+    color: green;
+    font-weight: bold;
+    margin: 10px 0;
+}
+</style>
+</head>
+<body>
+
+<h1>Daftar Produk</h1>
+
+<!-- Search -->
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Cari produk..." onkeyup="cariProduk()">
+</div>
+
+<!-- Filter -->
+<div style="text-align:center;">
+    <button class="filter-btn" onclick="setKategori('all')">Semua</button>
+    <button class="filter-btn" onclick="setKategori('elektronik')">Elektronik</button>
+    <button class="filter-btn" onclick="setKategori('fashion')">Fashion</button>
+    <button class="filter-btn" onclick="setKategori('makanan')">Makanan</button>
+</div>
+
+<!-- Container Produk -->
+<div class="product-container" id="productContainer"></div>
+
+<script>
+
+const produk = [
+    {
+        nama: "Laptop Gaming",
+        harga: 12000000,
+        deskripsi: "Laptop performa tinggi untuk gaming.",
+        gambar: "https://via.placeholder.com/300x200",
+        kategori: "elektronik"
+    },
+    {
+        nama: "Kaos Polos",
+        harga: 75000,
+        deskripsi: "Kaos nyaman untuk sehari-hari.",
+        gambar: "https://via.placeholder.com/300x200",
+        kategori: "fashion"
+    },
+    {
+        nama: "Headphone Bluetooth",
+        harga: 350000,
+        deskripsi: "Headphone wireless dengan kualitas suara jernih.",
+        gambar: "https://via.placeholder.com/300x200",
+        kategori: "elektronik"
+    },
+    {
+        nama: "Keripik Kentang",
+        harga: 20000,
+        deskripsi: "Cemilan renyah dan gurih.",
+        gambar: "https://via.placeholder.com/300x200",
+        kategori: "makanan"
+    }
+];
+
+let kategoriAktif = "all";
+
+function tampilkanProduk(data) {
+    const container = document.getElementById("productContainer");
+    container.innerHTML = "";
+
+    if (data.length === 0) {
+        container.innerHTML = "<p>Produk tidak ditemukan</p>";
+        return;
+    }
+
+    data.forEach(item => {
+        container.innerHTML += `
+            <div class="card">
+                <img src="${item.gambar}" alt="${item.nama}">
+                <h3>${item.nama}</h3>
+                <p>${item.deskripsi}</p>
+                <div class="price">Rp ${item.harga.toLocaleString()}</div>
+                <button>Beli</button>
+            </div>
+        `;
+    });
+}
+
+function setKategori(kategori) {
+    kategoriAktif = kategori;
+    cariProduk();
+}
+
+function cariProduk() {
+    const keyword = document.getElementById("searchInput").value.toLowerCase();
+
+    let hasil = produk.filter(item => {
+        const cocokKategori = kategoriAktif === "all" || item.kategori === kategoriAktif;
+        const cocokNama = item.nama.toLowerCase().includes(keyword);
+        return cocokKategori && cocokNama;
+    });
+
+    tampilkanProduk(hasil);
+}
+
+// Tampilkan semua saat load
+tampilkanProduk(produk);
+
+</script>
+
+</body>
+</html>
